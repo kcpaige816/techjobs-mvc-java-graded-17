@@ -57,5 +57,4 @@ public class SearchController {
         // Return the 'search' view
         return "search";
     }
-
 }
