@@ -8,11 +8,12 @@
 
 <div class="container body-content">
 
+    <!--    <h1>View Jobs By Category</h1>-->
   <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
   <form th:action="@{/search/results}" method = "post">
     <h2>Search by:</h2>
-
+      <!--        <div th:fragment="job-listing">-->
     <p>
             <span th:each="column : ${columns}">
                 <input
@@ -37,6 +38,33 @@
   <hr />
 
   <!-- TODO #4 - Loop over the search results to display all job fields. -->
+    <table th:each="job : ${jobs}" class="job-listing">
+        <tr>
+            <th>ID</th>
+            <td th:text="${job.id}"></td>
+        </tr>
+        <tr>
+            <th>Job Name</th>
+            <td th:text="${job.name}"></td>
+        </tr>
+        <tr>
+            <th>Employer</th>
+            <td th:text="${job.employer}"></td>
+        </tr>
+        <tr>
+            <th>Location</th>
+            <td th:text="${job.location}"></td>
+        </tr>
+        <tr>
+            <th>Position Type</th>
+            <td th:text="${job.positionType}"></td>
+        </tr>
+        <tr>
+            <th>Skill</th>
+            <td th:text="${job.coreCompetency}"></td>
+        </tr>
+
+    </table>
 
 </div>
 

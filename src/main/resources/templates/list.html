@@ -20,11 +20,24 @@
   <tr>
     <!-- TODO #2: Complete the View Jobs By Category Table. -->
 
-    <td></td> <!-- Feel free to remove or modify this element if necessary. -->
+    <!-- HTML table cell containing a link to view all jobs -->
+    <td>
+      <!-- This link points to the '/list/jobs' endpoint with the 'column' parameter set to 'all' -->
+      <a th:href="@{/list/jobs(column='all')}">View All</a>
+    </td>
 
+    <!-- HTML table cell that iterates over each category in 'tableChoices' -->
     <td th:each="category : ${tableChoices}">
+      <!-- Unordered list to contain the items of the current category -->
       <ul>
+        <!-- Iterate over each item in the current category's value -->
         <li th:each="item : ${category.value}">
+          <!--
+          Link to the '/list/jobs' endpoint with:
+          - 'column' parameter set to the current category's key
+          - 'value' parameter set to the current item
+          The link text is set to the current item
+          -->
           <a th:href="@{/list/jobs(column=${category.key},value=${item})}" th:text="${item}"></a>
         </li>
       </ul>
